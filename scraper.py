@@ -392,7 +392,7 @@ def scrape_medex_brands_full(max_pages=None, start_page=1):
             all_data[link] = med_data
             
             # Save incrementally after each medicine
-            with open("medex_brands_data.json", "w") as f:
+            with open("medex_brands_data(80-100).json", "w") as f:
                 json.dump(all_data, f, indent=2)
             
             # Add a small random delay to be respectful

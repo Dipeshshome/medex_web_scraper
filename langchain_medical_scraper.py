@@ -183,7 +183,7 @@ class BrowserManager:
             self.driver.get(url)
             
             # Random wait to mimic human behavior (between 2 and 5 seconds)
-            time.sleep(random.uniform(5, 10))
+            time.sleep(random.uniform(10, 15))
             
             # Check if CAPTCHA or security challenge is present
             captcha_type = self._detect_captcha_type()
@@ -291,7 +291,7 @@ class BrowserManager:
             """)
             
             # Wait for form submission to complete
-            time.sleep(15)
+            time.sleep(25)
             return True
             
         except Exception as e:
@@ -331,7 +331,7 @@ class BrowserManager:
             """)
             
             # Wait for form submission to complete
-            time.sleep(15)
+            time.sleep(25)
             return True
             
         except Exception as e:
@@ -376,7 +376,7 @@ class BrowserManager:
             submit_buttons = self.driver.find_elements(By.XPATH, "//button[@type='submit'] | //input[@type='submit']")
             if submit_buttons:
                 submit_buttons[0].click()
-                time.sleep(3)  # Wait for the form to submit
+                time.sleep(5)  # Wait for the form to submit
                 return True
             else:
                 logger.warning("Could not find submit button")
@@ -427,7 +427,7 @@ def fetch_webpage(url: str) -> Dict[str, str]:
         }
         
         # Add delay to respect website's resources (random between 1-3 seconds)
-        time.sleep(random.uniform(3, 5))
+        time.sleep(random.uniform(5, 8))
         
         response = requests.get(url, headers=headers, timeout=10)
         
