@@ -178,6 +178,13 @@ def scrape_medicine_details(url):
             med_data['name'] = name_elem.text.strip()
         else:
             med_data['name'] = "Unknown"
+
+        # Extract Genric (from the <div title="Generic Name">)
+        strength_elem = soup.select_one('div[title="Generic Name"]')
+        if strength_elem:
+            med_data['generic'] = strength_elem.text.strip()
+        else:
+            med_data['generic'] = "Not available"
         
         # Extract pack image URL (from the <a> tag with the "pack image" link)
         pack_image_elem = soup.select_one('a.innovator-brand-badge')  # Selector for pack image link
